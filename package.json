@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-firefox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "web-ext run -s /home/node/dist/ --reload -f"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web-ext": "^7.4.0"
+  }
+}

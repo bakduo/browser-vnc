@@ -15,4 +15,39 @@ docker run --rm --network firefox_default --init -v $(pwd)firefox/dist:/home/nod
 - [x] multi web extension for browser.
 - [x] multi network for browser.
 - [x] isolation browser for user.
-- [x] minimal dependencies.
+- [x] minimal desktop dependencies.
+
+# Configuration Desktop for user container
+
+```
+lxde.conf
+
+[program:startlxde]
+command=startlxde
+autorestart=true
+user = node
+
+xvfb.conf
+
+[program:xvfb]
+command=Xvfb :0 -screen 0 DISPLAY_WIDTHxDISPLAY_HEIGHTx24 -listen tcp -ac
+autorestart=true
+user=node
+
+x11vnc.conf
+
+[program:x11vnc]
+command=x11vnc -forever -loop -noxdamage -repeat -shared
+autorestart=true
+user = node
+
+websocket.conf
+
+[program:websockify]
+command=websockify --web /usr/share/novnc 8080 localhost:5900
+autorestart=true
+user = node
+
+etc...
+
+```
